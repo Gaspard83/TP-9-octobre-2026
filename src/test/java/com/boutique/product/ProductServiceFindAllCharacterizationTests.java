@@ -47,7 +47,7 @@ class ProductServiceFindAllCharacterizationTests {
     void nonNullCategoryTakesPriorityWithoutValidatingItsValue(Long categoryId) {
         when(repository.findByCategoryId(categoryId)).thenReturn(List.of());
 
-        assertEquals(List.of(), service.findAll(categoryId, "mail"));
+        assertEquals(List.of(), service.findAll(categoryId, "telephone"));
 
         verify(repository).findByCategoryId(categoryId);
         verifyNoMoreInteractions(repository);
