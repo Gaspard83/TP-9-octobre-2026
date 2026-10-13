@@ -1,0 +1,88 @@
+# Pipeline CI Azure DevOps - Boutique en Ligne
+# Déclenché à chaque push sur la branche main et sur les Pull Requests
+
+trigger:
+  branches:
+    include:
+      - main
+
+pr:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  MAVEN_CACHE_FOLDER: $(Pipeline.Workspace)/.m2/repository
+  MAVEN_OPTS: '-Dmaven.repo.local=$(MAVEN_CACHE_FOLDER)'
+
+stages:
+  - stage: BuildAndTest
+    displayName: 'Build, Tests et Couverture'
+    jobs:
+      - job: MavenBuild
+        displayName: 'Compilation Maven, Tests et Analyse JaCoCo'
+        steps:
+          # Étape 1 : Configuration du JDK 21 (compatible Java 17+)
+          - task: JavaToolInstaller@0
+            displayName: 'Installer Java 21'
+            inputs:
+              versionSpec: '21'
+              jdkArchitectureOption: 'x64'
+              jdkSourceOption: 'PreInstalled'
+
+          # Étape 2 : Mise en cache des dépendances Maven pour accélérer les builds
+          - task: Cache@2
+            displayName: 'Cache des dépendances Maven'
+            inputs:
+              key: 'maven | "$(Agent.OS)" | pom.xml'
+              restoreKeys: |
+                maven | "$(Agent.OS)"
+                maven
+              path: $(MAVEN_CACHE_FOLDER)
+
+          # Étape 3 : Donner les droits d'exécution au script Maven Wrapper
+          - script: chmod +x mvnw
+            displayName: 'Rendre le script mvnw exécutable'
+
+          # Étape 4 : Exécution du build complet, des tests et du contrôle JaCoCo
+          - script: ./mvnw clean verify $(MAVEN_OPTS)
+            displayName: 'Exécuter Maven clean verify'
+
+          # Étape 5 : Publication des résultats des tests JUnit dans Azure DevOps
+          - task: PublishTestResults@2
+            displayName: 'Publier les résultats des tests JUnit'
+            condition: succeededOrFailed()
+            inputs:
+              testResultsFormat: 'JUnit'
+              testResultsFiles: '**/surefire-reports/TEST-*.xml'
+              mergeTestResults: true
+              failTaskOnFailedTests: true
+
+          # Étape 6 : Publication du rapport de couverture de code JaCoCo
+          - task: PublishCodeCoverageResults@2
+            displayName: 'Publier la couverture de code JaCoCo'
+            condition: succeededOrFailed()
+            inputs:
+              summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/target/site/jacoco/jacoco.xml'
+              pathToSources: '$(System.DefaultWorkingDirectory)/src/main/java/'
+
+          # Étape 7 : Copie du JAR exécutable pour l'archivage
+          - task: CopyFiles@2
+            displayName: 'Copier le JAR exécutable'
+            inputs:
+              SourceFolder: '$(System.DefaultWorkingDirectory)/target'
+              Contents: '*.jar'
+              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+            condition: succeeded()
+
+          # Étape 8 : Publication de l'artefact JAR dans le pipeline
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publier l artefact JAR'
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+              ArtifactName: 'drop'
+              publishLocation: 'Container'
+            condition: succeeded()

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rapport de couverture Customer — 12 octobre 2026</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #172b4d; background: #f4f6fa; }
+    body { max-width: 1100px; margin: auto; padding: 32px 20px; line-height: 1.6; }
+    header, section { background: white; padding: 24px; margin-bottom: 20px; border-radius: 12px; border: 1px solid #dbe2ec; }
+    h1, h2 { line-height: 1.25; }
+    h1 { margin-top: 0; }
+    h2 { margin-top: 0; color: #244678; }
+    a { color: #164fa3; }
+    .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+    .metric { background: #edf7f0; border-radius: 8px; padding: 16px; }
+    .metric strong { display: block; font-size: 2rem; color: #17643c; }
+    .note { border-left: 4px solid #d39416; background: #fff8e6; padding: 12px 16px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    caption { text-align: left; font-weight: 600; margin-bottom: 8px; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #dbe2ec; vertical-align: top; }
+    th { background: #eef2f8; }
+    .pass { color: #17643c; font-weight: 700; }
+    code { background: #eef2f8; padding: 2px 5px; border-radius: 4px; }
+    pre { background: #172b4d; color: white; padding: 16px; overflow-x: auto; border-radius: 8px; }
+    pre code { background: none; padding: 0; }
+    footer { color: #516079; font-size: .9rem; }
+    @media print {
+      body { padding: 0; background: white; }
+      header, section { border-radius: 0; break-inside: avoid; }
+      .table-wrap { overflow: visible; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Rapport de couverture Customer</h1>
+    <p>Boutique en ligne — packages <code>com.boutique.customer</code> et <code>com.boutique.customer.dto</code>.</p>
+    <p><strong>Export :</strong> 12 octobre 2026.
+      <strong>Mesures JaCoCo :</strong> 12 octobre 2026 à 15:50:57, heure locale.</p>
+    <p class="pass">Objectif de 80 % des lignes atteint dans chacun des deux packages.</p>
+    <div class="metrics">
+      <div class="metric"><strong>100 %</strong>Lignes Customer et DTO : 120/120</div>
+      <div class="metric"><strong>100 %</strong>Branches mesurées : 8/8</div>
+      <div class="metric"><strong>76</strong>Tests Customer réussis</div>
+      <div class="metric"><strong>105</strong>Tests réussis dans le projet</div>
+    </div>
+  </header>
+
+  <section aria-labelledby="scope-title">
+    <h2 id="scope-title">Périmètre et sources</h2>
+    <p>Ce document est un instantané des rapports existants, pas une nouvelle exécution des tests.
+      Les mesures proviennent du <a href="../target/site/jacoco/jacoco.xml">rapport XML JaCoCo</a>
+      et les résultats des <a href="../target/surefire-reports/">rapports Maven Surefire</a>.</p>
+    <p><a href="../target/site/jacoco/index.html">Consulter le rapport HTML JaCoCo détaillé</a>
+      · <a href="../target/site/jacoco/jacoco-sessions.html">Consulter les sessions instrumentées</a></p>
+    <div class="note">
+      <strong>Limite d'interprétation :</strong> 100 % de couverture signifie que les lignes et
+      branches instrumentées ont été exécutées. Cela ne prouve pas l'exhaustivité des assertions,
+      la validation de toutes les entrées, le contrat HTTP, les droits d'accès ni la persistance réelle.
+      Le seuil de 80 % concerne Customer et ses DTO, pas la couverture globale du projet.
+    </div>
+  </section>
+
+  <section aria-labelledby="coverage-title">
+    <h2 id="coverage-title">Couverture par classe</h2>
+    <div class="table-wrap">
+      <table>
+        <caption>Mesures de lignes et de branches JaCoCo</caption>
+        <thead><tr><th scope="col">Classe</th><th scope="col">Lignes couvertes / total</th><th scope="col">Couverture des lignes</th><th scope="col">Branches couvertes / total</th></tr></thead>
+        <tbody>
+          <tr><td>CustomerService</td><td>67/67</td><td class="pass">100 %</td><td>6/6 — 100 %</td></tr>
+          <tr><td>CustomerMapper</td><td>12/12</td><td class="pass">100 %</td><td>2/2 — 100 %</td></tr>
+          <tr><td>CustomerController</td><td>10/10</td><td class="pass">100 %</td><td>Non applicable</td></tr>
+          <tr><td>Customer</td><td>24/24</td><td class="pass">100 %</td><td>Non applicable</td></tr>
+          <tr><td>Role</td><td>3/3</td><td class="pass">100 %</td><td>Non applicable</td></tr>
+          <tr><td>CustomerRepository</td><td>Non applicable</td><td>Interface sans code exécutable mesuré</td><td>Non applicable</td></tr>
+          <tr><td>CustomerRequest</td><td>1/1</td><td class="pass">100 %</td><td>Non applicable</td></tr>
+          <tr><td>CustomerCreateRequest</td><td>2/2</td><td class="pass">100 %</td><td>Non applicable</td></tr>
+          <tr><td>CustomerResponse</td><td>1/1</td><td class="pass">100 %</td><td>Non applicable</td></tr>
+        </tbody>
+        <tfoot><tr><th scope="row">Total du périmètre</th><td>120/120</td><td class="pass">100 %</td><td>8/8 — 100 %</td></tr></tfoot>
+      </table>
+    </div>
+    <p>Package Customer : 116/116 lignes. Package DTO Customer : 4/4 lignes.
+      Aucune ligne ni branche mesurée n'est non couverte.</p>
+  </section>
+
+  <section aria-labelledby="tests-title">
+    <h2 id="tests-title">Résultats des tests</h2>
+    <div class="table-wrap">
+      <table>
+        <caption>Tests Customer : aucun échec, aucune erreur, aucun test ignoré</caption>
+        <thead><tr><th scope="col">Suite</th><th scope="col">Tests</th><th scope="col">Échecs</th><th scope="col">Erreurs</th><th scope="col">Ignorés</th></tr></thead>
+        <tbody>
+          <tr><td><a href="../src/test/java/com/boutique/customer/CustomerControllerTests.java">CustomerControllerTests</a></td><td>7</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td><a href="../src/test/java/com/boutique/customer/CustomerMapperTests.java">CustomerMapperTests</a></td><td>13</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td><a href="../src/test/java/com/boutique/customer/CustomerServiceTests.java">CustomerServiceTests</a></td><td>19</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td><a href="../src/test/java/com/boutique/customer/CustomerValidationTests.java">CustomerValidationTests</a></td><td>37</td><td>0</td><td>0</td><td>0</td></tr>
+        </tbody>
+        <tfoot><tr><th scope="row">Total Customer</th><td>76</td><td>0</td><td>0</td><td>0</td></tr></tfoot>
+      </table>
+    </div>
+    <p>La dernière exécution complète <code>.\mvnw.cmd clean verify</code> a terminé avec
+      un code de sortie 0 : 105 tests réussis et contrôle JaCoCo accepté.</p>
+  </section>
+
+  <section aria-labelledby="scenarios-title">
+    <h2 id="scenarios-title">Scénarios actuellement vérifiés</h2>
+    <ul>
+      <li><strong>Service :</strong> liste ordonnée ou vide, lecture par identifiant, profil courant,
+        création, rôle par défaut ou explicite, encodage délégué, doublons d'email, mise à jour,
+        accès refusé, suppression avec flush et client introuvable via getEntity.</li>
+      <li><strong>Mapping :</strong> nettoyage des noms, normalisation de l'email, conservation du rôle
+        et du mot de passe lors d'une mise à jour, champs facultatifs nuls ou vides.</li>
+      <li><strong>Validation Jakarta :</strong> profils nominaux et bornes valides sur DTO et entité :
+        noms de 1 ou 100 caractères, email de 150 caractères, adresse de 255 caractères,
+        téléphone de 10 ou 15 chiffres avec ou sans +, mot de passe de création de 8 ou 72 caractères.</li>
+      <li><strong>Contrôleur :</strong> délégation au service et restitution des réponses, y compris une liste vide.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="gaps-title">
+    <h2 id="gaps-title">Cas manquants et recommandations</h2>
+    <p>Ces lacunes sont fonctionnelles : elles peuvent exister même à 100 % de couverture JaCoCo.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>Plan de renforcement proposé — non implémenté dans cet export</caption>
+        <thead><tr><th scope="col">Priorité</th><th scope="col">Périmètre</th><th scope="col">Cas à ajouter</th><th scope="col">Résultat à vérifier</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Validation négative</td><td>Noms obligatoires nuls, vides, blancs ou de 101 caractères ; email invalide ou de 151 caractères ; téléphone vide, de 9/16 chiffres ou contenant des lettres ; adresse de 256 caractères ; mot de passe nul, blanc ou de 7/73 caractères ; rôle nul dans l'entité.</td><td>Violation sur le champ et la contrainte attendus ; une seule donnée invalide par scénario.</td></tr>
+          <tr><td>1</td><td>Contrat HTTP</td><td>Création, lecture, mise à jour et suppression via MockMvc ; données invalides, client absent, email dupliqué, JSON mal formé et identifiant non numérique.</td><td>Statuts 201/200/204/400/404/409, corps JSON attendu, absence du mot de passe dans les réponses.</td></tr>
+          <tr><td>1</td><td>Droits d'accès</td><td>Requête anonyme ; client tentant de lister/créer/supprimer ; lecture ou modification d'un autre profil ; accès à son propre profil et accès administrateur.</td><td>401 ou 403 pour les accès interdits ; succès pour les accès autorisés, avec la chaîne Spring Security réelle.</td></tr>
+          <tr><td>2</td><td>Service</td><td>Client absent via findById, findCurrent, update et delete ; doublon via create ; erreurs d'encodage, de sauvegarde, de suppression, de flush ou de mapping.</td><td>Propagation de l'erreur, aucun succès artificiel et aucune opération ultérieure après l'échec.</td></tr>
+          <tr><td>2</td><td>Persistance</td><td>Créer/modifier/supprimer puis relire après vidage du contexte ; unicité de l'email ; suppression d'un client référencé ; BCrypt réel.</td><td>Données réellement persistées, contraintes effectives, rôle et mot de passe conservés, mot de passe haché reconnu par matches().</td></tr>
+          <tr><td>3</td><td>Mapping</td><td>Identifiant non nul dans toResponse ; normalisation répétée ; normalisation sous une locale différente, notamment turque.</td><td>Identifiant conservé, normalisation idempotente et stabilité du résultat indépendamment de la locale.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Ordre recommandé :</strong> validation négative → HTTP et droits d'accès →
+      erreurs du service → persistance réelle → robustesse du mapping.</p>
+  </section>
+
+  <section aria-labelledby="reproduce-title">
+    <h2 id="reproduce-title">Reproduire les mesures</h2>
+    <p>Depuis la racine du dépôt, avec un JDK fonctionnel configuré :</p>
+    <pre><code>$env:JAVA_HOME = "$env:USERPROFILE\.jdks\ms-21.0.7"
+.\mvnw.cmd "-Dtest=Customer*Tests" test
+.\mvnw.cmd clean verify</code></pre>
+    <p>Le <a href="../pom.xml">pom.xml</a> impose au moins 80 % des lignes dans chacun des
+      packages Customer et DTO. JaCoCo régénère son rapport dans
+      <code>target/site/jacoco/index.html</code>.</p>
+    <p>Ce rapport de synthèse est statique : ses chiffres doivent être actualisés après
+      une nouvelle exécution. Les liens JaCoCo et Surefire nécessitent la présence du dossier
+      <code>target</code> ; le contenu de la synthèse reste lisible hors ligne sans dépendance externe.</p>
+  </section>
+  <footer>Rapport de synthèse exporté en HTML — aucune source métier ni aucun test modifié pour cet export.</footer>
+</body>
+</html>
